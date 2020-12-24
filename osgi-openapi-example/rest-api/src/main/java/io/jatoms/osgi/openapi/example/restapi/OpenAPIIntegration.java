@@ -45,7 +45,7 @@ public class OpenAPIIntegration {
                 )
                 .extensions(
                     Map.of(
-                        "x-logo", Map.of("url", "https://qbilon.io/img/qbilon_logo.1b079952.png", "altText", "jatoms Logo"),
+                        "x-logo", Map.of("url", "https://github.com/Sandared/osgi-openapi-example/raw/main/logo.png", "altText", "jatoms Logo"),
                         "x-tagGroups", List.of(
                             Map.of("name", "Item", "tags", List.of(Doc.Api.Tags.item))
                         )

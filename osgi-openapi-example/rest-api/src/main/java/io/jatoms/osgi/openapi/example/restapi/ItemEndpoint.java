@@ -11,7 +11,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import org.osgi.service.blueprint.reflect.Metadata;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.ServiceScope;
 import org.osgi.service.jaxrs.whiteboard.propertytypes.JaxrsApplicationSelect;
@@ -21,6 +20,7 @@ import org.slf4j.LoggerFactory;
 
 import io.jatoms.osgi.openapi.model.ExceptionResponse;
 import io.jatoms.osgi.openapi.model.Item;
+import io.jatoms.osgi.openapi.model.Metadata;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;

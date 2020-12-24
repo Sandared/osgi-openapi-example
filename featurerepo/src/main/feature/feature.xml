@@ -8,10 +8,14 @@
         <bundle>mvn:io.jatoms/osgi-openapi-restapi/${project.version}</bundle>
         <bundle>mvn:io.jatoms/osgi-openapi-model/${project.version}</bundle>
 
+        <bundle dependency="true">mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.saaj-api-1.3/${servicemix-spec.version}</bundle>
+        <bundle dependency="true">mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.jaxws-api-2.2/${servicemix-spec.version}</bundle> 
+
         <!-- dependencies -->
         <feature>scr</feature>
         <feature>http-whiteboard</feature>
         <feature>openapi-integration</feature>
+        <feature>aries-jax-rs-whiteboard</feature>
     </feature>
 
 
@@ -42,6 +46,7 @@
         <bundle dependency="true">mvn:javax.validation/validation-api/${validation-api.version}</bundle>
         <bundle dependency="true">mvn:org.yaml/snakeyaml/${snakeyaml.version}</bundle>
         <bundle dependency="true">mvn:io.github.classgraph/classgraph/${classgraph.version}</bundle>
+        <bundle dependency="true">mvn:javax.ws.rs/javax.ws.rs-api/${javax-ws-rs-api.version}</bundle>
     </feature>
 
     <feature name="jackson" description="Java Jackson library for (de-)serialization of Java POJOs" version="${jackson.version}">
