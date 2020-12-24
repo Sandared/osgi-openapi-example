@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<features name="${project.artifactId}-${project.version}" xmlns="http://karaf.apache.org/xmlns/features/v1.6.0">
+
+    <repository>mvn:org.apache.cxf.karaf/apache-cxf/${cxf.version}/xml/features</repository>
+    <repository>mvn:org.apache.aries.jax.rs/org.apache.aries.jax.rs.features/${aries-jax-rs.version}/xml</repository>
+
+    <feature name="jatoms-openapi" description="The jatoms REST API documentation frontend" version="${project.version}">
+        <bundle>mvn:io.jatoms/osgi-openapi-restapi/${project.version}</bundle>
+        <bundle>mvn:io.jatoms/osgi-openapi-model/${project.version}</bundle>
+
+        <!-- dependencies -->
+        <feature>scr</feature>
+        <feature>http-whiteboard</feature>
+        <feature>openapi-integration</feature>
+    </feature>
+
+
+    <!-- ############################################################ -->
+    <!-- #                                                          # -->
+    <!-- #                        LIBRARIES                         # -->
+    <!-- #                                                          # -->
+    <!-- ############################################################ -->
+
+    <feature name="openapi-integration" description="Apache Aries OpenAPI Integration and dependencies" version="${aries-jax-rs-openapi.version}">
+        <!-- Apache Aries OpenApi integation -->
+        <bundle>mvn:io.jatoms/osgi-openapi-integration/${aries-jax-rs-openapi.version}</bundle>
+
+        <!-- dependencies -->
+        <feature>jackson</feature>
+        <feature>openapi</feature>
+    </feature>
+
+    <feature name="openapi" description="Apache Aries OpenAPI Integration and dependencies" version="${aries-jax-rs-openapi.version}">
+        <bundle dependency="true">mvn:io.swagger.core.v3/swagger-annotations/${swagger.version}</bundle>
+        <bundle dependency="true">mvn:io.swagger.core.v3/swagger-models/${swagger.version}</bundle>
+        <bundle dependency="true">mvn:io.swagger.core.v3/swagger-core/${swagger.version}</bundle>
+        <bundle dependency="true">mvn:io.swagger.core.v3/swagger-integration/${swagger.version}</bundle>
+        <bundle dependency="true">mvn:io.swagger.core.v3/swagger-jaxrs2/${swagger.version}</bundle>
+
+        <!-- swagger (transitive) dependencies -->
+        <bundle dependency="true">mvn:org.apache.commons/commons-lang3/${commons-lang3.version}</bundle>
+        <bundle dependency="true">mvn:javax.validation/validation-api/${validation-api.version}</bundle>
+        <bundle dependency="true">mvn:org.yaml/snakeyaml/${snakeyaml.version}</bundle>
+        <bundle dependency="true">mvn:io.github.classgraph/classgraph/${classgraph.version}</bundle>
+    </feature>
+
+    <feature name="jackson" description="Java Jackson library for (de-)serialization of Java POJOs" version="${jackson.version}">
+        <bundle dependency="true">mvn:com.fasterxml.jackson.core/jackson-core/${jackson.version}</bundle>
+        <bundle dependency="true">mvn:com.fasterxml.jackson.core/jackson-databind/${jackson.version}</bundle>
+        <bundle dependency="true">mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-base/${jackson.version}</bundle>
+        <bundle dependency="true">mvn:com.fasterxml.jackson.core/jackson-annotations/${jackson.version}</bundle>
+        <bundle dependency="true">mvn:com.fasterxml.jackson.datatype/jackson-datatype-jsr310/${jackson.version}</bundle>
+        <bundle dependency="true">mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider/${jackson.version}</bundle>
+        <bundle dependency="true">mvn:com.fasterxml.jackson.dataformat/jackson-dataformat-yaml/${jackson.version}</bundle>
+    </feature>
+
+</features>

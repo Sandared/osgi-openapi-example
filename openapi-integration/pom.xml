@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>io.jatoms</groupId>
+        <artifactId>osgi-openapi</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <groupId>io.jatoms</groupId>
+    <artifactId>osgi-openapi-integration</artifactId>
+    <version>${aries-jax-rs-openapi.version}</version>
+    <packaging>pom</packaging>
+
+    <description>This OSGi bundle simply installs the Apache Aries openAPI integration under io.jatoms namespace, as long as it is not yet available on maven central.</description>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-install-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>install-file</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>install-file</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <file>org.apache.aries.jax.rs.openapi.resource-1.0.11-SNAPSHOT.jar</file>
+                    <groupId>io.jatoms</groupId>
+                    <artifactId>osgi-openapi-integration</artifactId>
+                    <version>${aries-jax-rs-openapi.version}</version>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
