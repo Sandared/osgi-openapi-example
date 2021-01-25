@@ -5,6 +5,7 @@ public class Doc {
     public static class Api{
         public static class Tags{
             public static final String item = "item";
+            public static final String test = "test";
         }
         
         public static class Info {

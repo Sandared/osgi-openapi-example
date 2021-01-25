@@ -47,12 +47,13 @@ public class OpenAPIIntegration {
                     Map.of(
                         "x-logo", Map.of("url", "https://github.com/Sandared/osgi-openapi-example/raw/main/logo.png", "altText", "jatoms Logo"),
                         "x-tagGroups", List.of(
-                            Map.of("name", "Item", "tags", List.of(Doc.Api.Tags.item))
+                            Map.of("name", "Item", "tags", List.of(Doc.Api.Tags.item)),
+                            Map.of("name", "Test", "tags", List.of(Doc.Api.Tags.test))
                         )
                     )
                 )
             )
-            .tags(List.of(new Tag().name(Doc.Api.Tags.item).description("Item operations")));
+            .tags(List.of(new Tag().name(Doc.Api.Tags.item).description("Item operations"), new Tag().name(Doc.Api.Tags.test).description("test")));
             Hashtable<String, Object> props = new Hashtable<>();
             props.put(JAX_RS_APPLICATION_SELECT, "(osgi.jaxrs.name=apiv1)");
             registration = context.registerService(OpenAPI.class, api, props);

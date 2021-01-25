@@ -1,8 +1,10 @@
-package io.jatoms.osgi.openapi.model;
+package io.jatoms.osgi.openapi.model.test;
 
+import io.jatoms.osgi.openapi.model.ItemType;
 import io.swagger.v3.oas.annotations.media.Schema;
 
-public class Item {
+public class Test {
+    
     @Schema(description = "Name chosen by the user for this Item", example = "This is a sample Item")
     public String name = "";
     @Schema(description = "A description of this Item", example = "This item is meant only for testing purposes!")
@@ -11,5 +13,4 @@ public class Item {
     public String image = "";
     @Schema(description = "Itemtype specific information, i.e., for complex items, simple items, etc.")
     public ItemType itemType;
-
 }
