@@ -1,5 +1,7 @@
 package io.jatoms.osgi.openapi.example.restapi;
 
+import java.util.List;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -11,6 +13,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import org.apache.cxf.rs.security.cors.CrossOriginResourceSharing;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.ServiceScope;
 import org.osgi.service.jaxrs.whiteboard.propertytypes.JaxrsApplicationSelect;
@@ -21,6 +24,7 @@ import org.slf4j.LoggerFactory;
 import io.jatoms.osgi.openapi.model.ExceptionResponse;
 import io.jatoms.osgi.openapi.model.Item;
 import io.jatoms.osgi.openapi.model.Metadata;
+import io.jatoms.osgi.openapi.model.SimpleItem;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -31,6 +35,11 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 @Path("/item")
 @JaxrsApplicationSelect("(osgi.jaxrs.name=apiv1)")
 @Component(service = ItemEndpoint.class, scope = ServiceScope.PROTOTYPE)
+@CrossOriginResourceSharing(
+    allowAllOrigins = true,
+    allowCredentials = true,
+    allowHeaders = {"origin", "content-type", "accept", "authorization"}
+)
 public class ItemEndpoint {
     private final Logger log = LoggerFactory.getLogger(ItemEndpoint.class);
 
@@ -41,8 +50,7 @@ public class ItemEndpoint {
     @ApiResponse(responseCode = "5xx", content = @Content(schema = @Schema(implementation = ExceptionResponse.class)))
     public Response getAllItems() {
         log.info("GET /item");
-        // return some Response with all items set as Metadata in a list in the body
-        return null;
+        return Response.ok(List.of(new Metadata())).build();
     }
 
     @POST

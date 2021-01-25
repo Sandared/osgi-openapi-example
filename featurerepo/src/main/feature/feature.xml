@@ -15,6 +15,7 @@
         <feature>scr</feature>
         <feature>http-whiteboard</feature>
         <feature>openapi-integration</feature>
+        <feature>cxf-rs-security-cors</feature>
         <feature>aries-jax-rs-whiteboard</feature>
     </feature>
 
